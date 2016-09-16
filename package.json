@@ -1,0 +1,20 @@
+{
+  "name": "roadtrip",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha chai"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "mocha": "^3.0.2",
+    "node": "0.0.0",
+    "nodemon": "^1.10.2"
+  }
+}
