@@ -14,3 +14,12 @@ describe('SERVER', function() {
         expect(server.startServer()).to.equal(8282);
     });
 });
+
+
+describe('API', function() {
+   it('should GET all journeys', function(){
+       var api = require('../server.js');
+      expect(api.getJourneys()).to.equal(true); 
+   }); 
+});
+

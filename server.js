@@ -8,8 +8,8 @@ const cors = require("cors");
 const app = express();
 
 // -- Setup DB Connection
-const mongoose = require('mongoose');   
-mongoose.connect('mongodb://localhost/library');
+const db = require('mongoose');   
+db.connect('mongodb://localhost/mirage');
 
 
 // -- CORS
@@ -21,7 +21,34 @@ app.use(function (request, response, next) {
 });
 
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
+var Journeys = db.model('Journeys', {
+    name : String,
+    middle_name : String,
+    last_name : String, 
+    gender : String,
+    origin : String,
+    age : String
+});
+
+
+let getJourneys = () => {
+app.get('/journeys', function(request, response) {
+        Journeys.find(function(error, journeys) {
+            if (error)
+                response.send(error)
+            response.json(journeys);
+            console.log("GET Journeys: " + response.statusCode);
+            return response.statusCode;
+        });
+    });
+}
+
+getJourneys();
 
 // -- Listen
 let port = process.env.PORT || 8282;
@@ -31,5 +58,6 @@ console.log("Server listening on port " + port);
 let startServer = () => {
   return port
 }
+
 
 module.exports = { startServer: startServer };
