@@ -26,13 +26,18 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-var Journeys = db.model('Journeys', {
+let Journeys = db.model('Journeys', {
     name : String,
-    middle_name : String,
-    last_name : String, 
-    gender : String,
-    origin : String,
-    age : String
+    milestones : Number
+});
+
+let Milestones = db.model('Milestones', {
+    name : String,
+    characters : [],
+    country: String,
+    region: String,
+    coordinates: [],
+    duration: Number
 });
 
 
